@@ -7,9 +7,8 @@ from typing import Any
 from abstract_saver import AbstractSaver
 from aeroplane import Aeroplane
 
-# По умолчанию сохраняем в папку data, которую мы создали на первом шаге
-_DEFAULT_PATH = Path("data/aeroplanes.json")
-
+_BASE_DIR = Path(__file__).resolve().parent.parent
+_DEFAULT_PATH = _BASE_DIR / "data" / "aeroplanes.json"
 
 class JSONSaver(AbstractSaver):
     """Сохраняет информацию о самолетах в JSON-файл."""
