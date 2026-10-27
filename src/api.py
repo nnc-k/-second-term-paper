@@ -19,7 +19,7 @@ _STATES_KEYS = (
 class AeroplanesAPI(AbstractAPI):
     """Реализация API для Nominatim и OpenSky."""
 
-    USER_AGENT = "course-project/0.1 (student@example.com)"
+    USER_AGENT = "course-project/0.1 (katkova.a1997@gmail.com)"
 
     def _connect(self) -> requests.Session:
         session = requests.Session()
