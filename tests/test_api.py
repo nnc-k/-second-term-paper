@@ -1,6 +1,8 @@
 from unittest.mock import patch
+
 import pytest
 import requests
+
 from api import AeroplanesAPI
 
 
@@ -33,7 +35,11 @@ def test_get_aeroplanes_success():
     with patch.object(AeroplanesAPI, "_get_response") as mock_get:
         mock_get.side_effect = [
             [{"boundingbox": ["1", "2", "3", "4"]}],  # Ответ 1 (Nominatim)
-            {"states": [["icao123", "CALL", "Spain", 0, 0, 0, 0, 1000, False, 200, 0, 0, None, 1000, "0000", False, 0]]}
+            {
+                "states": [
+                    ["icao123", "CALL", "Spain", 0, 0, 0, 0, 1000, False, 200, 0, 0, None, 1000, "0000", False, 0]
+                ]
+            },
             # Ответ 2 (OpenSky)
         ]
 

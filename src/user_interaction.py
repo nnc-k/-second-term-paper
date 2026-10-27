@@ -23,10 +23,7 @@ def print_aeroplanes(aeroplanes: list[Aeroplane]) -> None:
 
     for a in aeroplanes:
         # Выводим данные ровными столбцами
-        print(
-            f"{a.callsign:<12}{a.origin_country:<25}"
-            f"{a.velocity:>10.1f}{a.baro_altitude:>12.1f}"
-        )
+        print(f"{a.callsign:<12}{a.origin_country:<25}" f"{a.velocity:>10.1f}{a.baro_altitude:>12.1f}")
 
 
 def user_interaction() -> None:
@@ -68,9 +65,7 @@ def user_interaction() -> None:
         print(f"Некорректный ввод для топа: {e}")
 
     # 4. Фильтрация по стране регистрации
-    countries_input = input(
-        "\nВведите страны регистрации через запятую (Enter - пропустить): "
-    ).strip()
+    countries_input = input("\nВведите страны регистрации через запятую (Enter - пропустить): ").strip()
     if countries_input:
         countries = [c.strip() for c in countries_input.split(",")]
         filtered = filter_by_origin_country(aeroplanes, countries)
@@ -78,9 +73,7 @@ def user_interaction() -> None:
         print_aeroplanes(filtered)
 
     # 5. Фильтрация по высоте
-    range_input = input(
-        "\nВведите диапазон высот (например 1000-12000, Enter - пропустить): "
-    ).strip()
+    range_input = input("\nВведите диапазон высот (например 1000-12000, Enter - пропустить): ").strip()
     if range_input:
         try:
             lo, hi = (float(x) for x in range_input.split("-", 1))

@@ -9,10 +9,23 @@ OPENSKY_URL = "https://opensky-network.org/api/states/all"
 
 # Ключи для расшифровки ответа от OpenSky
 _STATES_KEYS = (
-    "icao24", "callsign", "origin_country", "time_position", "last_contact",
-    "longitude", "latitude", "baro_altitude", "on_ground", "velocity",
-    "true_track", "vertical_rate", "sensors", "geo_altitude", "squawk",
-    "spi", "position_source",
+    "icao24",
+    "callsign",
+    "origin_country",
+    "time_position",
+    "last_contact",
+    "longitude",
+    "latitude",
+    "baro_altitude",
+    "on_ground",
+    "velocity",
+    "true_track",
+    "vertical_rate",
+    "sensors",
+    "geo_altitude",
+    "squawk",
+    "spi",
+    "position_source",
 )
 
 
@@ -37,12 +50,8 @@ class AeroplanesAPI(AbstractAPI):
         finally:
             session.close()
 
-    def get_country_bounding_box(
-            self, country: str
-    ) -> tuple[float, float, float, float]:
-        data = self._get_response(
-            NOMINATIM_URL, {"q": country, "format": "json", "limit": 1}
-        )
+    def get_country_bounding_box(self, country: str) -> tuple[float, float, float, float]:
+        data = self._get_response(NOMINATIM_URL, {"q": country, "format": "json", "limit": 1})
         if not data:
             raise ValueError(f"Страна {country!r} не найдена")
 

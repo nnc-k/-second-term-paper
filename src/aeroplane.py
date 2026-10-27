@@ -19,13 +19,13 @@ class Aeroplane:
     )
 
     def __init__(
-            self,
-            icao24: str,
-            callsign: str,
-            origin_country: str,
-            velocity: float | None,
-            baro_altitude: float | None,
-            on_ground: bool = False,
+        self,
+        icao24: str,
+        callsign: str,
+        origin_country: str,
+        velocity: float | None,
+        baro_altitude: float | None,
+        on_ground: bool = False,
     ) -> None:
         # Валидация данных
         if not icao24 or not isinstance(icao24, str):
@@ -40,9 +40,7 @@ class Aeroplane:
         self.__callsign = (callsign or "").strip()
         self.__origin_country = origin_country or ""
         self.__velocity = float(velocity) if velocity is not None else 0.0
-        self.__baro_altitude = (
-            float(baro_altitude) if baro_altitude is not None else 0.0
-        )
+        self.__baro_altitude = float(baro_altitude) if baro_altitude is not None else 0.0
         self.__on_ground = bool(on_ground)
 
     # Свойства (геттеры) для доступа к приватным атрибутам

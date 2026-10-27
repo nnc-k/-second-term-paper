@@ -18,9 +18,7 @@ class AbstractAPI(ABC):
         pass
 
     @abstractmethod
-    def get_country_bounding_box(
-        self, country: str
-    ) -> tuple[float, float, float, float]:
+    def get_country_bounding_box(self, country: str) -> tuple[float, float, float, float]:
         """Возвращает координаты страны (юг, север, запад, восток)."""
         pass
 

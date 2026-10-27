@@ -10,6 +10,7 @@ from aeroplane import Aeroplane
 _BASE_DIR = Path(__file__).resolve().parent.parent
 _DEFAULT_PATH = _BASE_DIR / "data" / "aeroplanes.json"
 
+
 class JSONSaver(AbstractSaver):
     """Сохраняет информацию о самолетах в JSON-файл."""
 
@@ -30,9 +31,7 @@ class JSONSaver(AbstractSaver):
 
     def _dump(self, data: list[dict[str, Any]]) -> None:
         """Записывает данные в файл."""
-        self.__path.write_text(
-            json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
-        )
+        self.__path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
     def add_aeroplane(self, aeroplane: Aeroplane) -> None:
         data = self._load()
@@ -42,17 +41,11 @@ class JSONSaver(AbstractSaver):
             data.append(record)
             self._dump(data)
 
-    def get_aeroplanes(
-        self, criteria: dict[str, Any] | None = None
-    ) -> list[Aeroplane]:
+    def get_aeroplanes(self, criteria: dict[str, Any] | None = None) -> list[Aeroplane]:
         data = self._load()
         if criteria:
             # Фильтруем словари по ключам (например, по стране регистрации)
-            data = [
-                d
-                for d in data
-                if all(d.get(key) == value for key, value in criteria.items())
-            ]
+            data = [d for d in data if all(d.get(key) == value for key, value in criteria.items())]
         # Превращаем обратно в объекты Aeroplane
         return Aeroplane.cast_to_object_list(data)
 

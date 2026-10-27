@@ -1,9 +1,7 @@
 from aeroplane import Aeroplane
 
 
-def filter_by_origin_country(
-        aeroplanes: list[Aeroplane], countries: list[str]
-) -> list[Aeroplane]:
+def filter_by_origin_country(aeroplanes: list[Aeroplane], countries: list[str]) -> list[Aeroplane]:
     """Оставляет самолеты, чья страна регистрации входит в список countries."""
     if not countries:
         return aeroplanes
@@ -13,17 +11,12 @@ def filter_by_origin_country(
     return [a for a in aeroplanes if a.origin_country.lower() in wanted]
 
 
-def filter_by_altitude_range(
-        aeroplanes: list[Aeroplane], min_altitude: float, max_altitude: float
-) -> list[Aeroplane]:
+def filter_by_altitude_range(aeroplanes: list[Aeroplane], min_altitude: float, max_altitude: float) -> list[Aeroplane]:
     """Оставляет самолеты, чья высота в диапазоне [min, max]."""
     if min_altitude > max_altitude:
         raise ValueError("Минимальная высота не может быть больше максимальной")
 
-    return [
-        a for a in aeroplanes
-        if min_altitude <= a.baro_altitude <= max_altitude
-    ]
+    return [a for a in aeroplanes if min_altitude <= a.baro_altitude <= max_altitude]
 
 
 def sort_by_altitude_desc(aeroplanes: list[Aeroplane]) -> list[Aeroplane]:

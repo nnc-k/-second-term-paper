@@ -1,4 +1,5 @@
 import pytest
+
 from aeroplane import Aeroplane
 
 
@@ -59,7 +60,7 @@ def test_cast_to_object_list():
     raw_data = [
         {"icao24": "a1", "callsign": "CALL", "origin_country": "Spain", "velocity": 200, "baro_altitude": 1000},
         {"icao24": "a2", "callsign": None, "origin_country": "France", "velocity": None, "baro_altitude": None},
-        {"callsign": "NO_ICAO", "origin_country": "Germany"}, # Без icao24 должен отфильтроваться
+        {"callsign": "NO_ICAO", "origin_country": "Germany"},  # Без icao24 должен отфильтроваться
     ]
     planes = Aeroplane.cast_to_object_list(raw_data)
     assert len(planes) == 2

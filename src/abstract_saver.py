@@ -13,9 +13,7 @@ class AbstractSaver(ABC):
         pass
 
     @abstractmethod
-    def get_aeroplanes(
-        self, criteria: dict[str, Any] | None = None
-    ) -> list[Aeroplane]:
+    def get_aeroplanes(self, criteria: dict[str, Any] | None = None) -> list[Aeroplane]:
         """Возвращает самолеты по указанным критериям (или все)."""
         pass
 
